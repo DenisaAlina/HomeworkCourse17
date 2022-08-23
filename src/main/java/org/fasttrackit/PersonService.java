@@ -54,13 +54,13 @@ public class PersonService {
 
     public List<Person> listAllPersonsFromOradea() {
         return personList.stream()
-                .filter(person -> person.city() == "Oradea")
+                .filter(person -> person.city().equals("Oradea"))
                 .toList();
     }
 
     public List<Person> listAllPersonsFromOradeaOrCluj() {
         return personList.stream()
-                .filter(combineFilters(person -> person.city() == "Oradea", person -> person.city() == "Cluj"))
+                .filter(person -> person.city().equals("Oradea") || person.city().equals("Cluj"))
                 .toList();
     }
 
@@ -134,5 +134,3 @@ public class PersonService {
 
 }
 
-record Person(String firstName, String lastName, int age, String city) {
-}
